@@ -1,0 +1,20 @@
+@import '~@servicetitan/tokens/dist/tokens';
+
+.container {
+    right: $spacing-6;
+    bottom: $spacing-4;
+    max-width: 250px;
+}
+
+.opened-container {
+    background-color: $color-white;
+    border: 1px $color-black solid;
+    border-radius: $default-border-radius;
+    padding: $spacing-2;
+    min-height: 250px;
+}
+
+.feedback-button {
+    box-shadow: 0px 7px 4px #00000026;
+    border-radius: $circular-radius;
+}

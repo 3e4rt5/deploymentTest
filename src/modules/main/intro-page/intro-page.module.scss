@@ -1,0 +1,22 @@
+@import '~@servicetitan/tokens/dist/tokens';
+
+.divider {
+    position: relative;
+
+    &::before {
+        content: ' ';
+        position: absolute;
+        border-bottom: 1px solid $color-neutral-60;
+        width: 100%;
+        left: 0;
+        top: 12px;
+    }
+
+    &::after {
+        content: 'OR';
+        background-color: $color-white;
+        position: relative;
+        padding: 0 $spacing-1;
+        color: $color-neutral-100;
+    }
+}
