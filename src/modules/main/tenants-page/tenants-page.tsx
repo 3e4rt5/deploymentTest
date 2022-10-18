@@ -69,14 +69,14 @@ export const TenantsPageConsumer: React.FC<{
     };
 
     return (
-        <div className="ta-center">
+        <div className="ta-center d-f flex-column align-items-center">
             <Headline size="xlarge">Let's enrich some data!</Headline>
             <BodyText size="large">
                 Would you like to generate a new list or enrich an existing list?
             </BodyText>
             <FlowCard.Step
                 title="Please enter a name for this list"
-                className="m-t-4"
+                className="m-t-4 w-50"
                 content={
                     <React.Fragment>
                         <BodyText className={`${Styles.requiredTitle} fs-italic`}>
@@ -93,7 +93,7 @@ export const TenantsPageConsumer: React.FC<{
             />
             <FlowCard.Step
                 title="Please enter a name for this list"
-                className="m-t-4"
+                className="m-t-4 w-50"
                 content={
                     <React.Fragment>
                         <BodyText className={`${Styles.requiredTitle} fs-italic`}>
