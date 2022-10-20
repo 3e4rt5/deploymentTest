@@ -17,7 +17,7 @@ export const ExportPage: React.FC = () => {
         <MainContext.Consumer>
             {props => (
                 <WrappedExportPage
-                    platforms={props?.adPlatforms}
+                    actions={props?.actions}
                     settings={props?.settings}
                     flow={props!.flow}
                     tenantData={props!.tenantData}
@@ -28,14 +28,14 @@ export const ExportPage: React.FC = () => {
 };
 
 interface WrappedExportPageProps {
-    platforms?: string[];
+    actions?: string[];
     settings?: Set<string>;
     flow?: Flow;
     tenantData: TenantData;
 }
 
 export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
-    platforms,
+    actions,
     settings,
     flow,
     tenantData,
@@ -46,17 +46,17 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
     const [uploadedId, setUploadedId] = React.useState('');
     const handleUploadClick = React.useCallback(
         (email: string) => async () => {
-            const payloadPlatforms = platforms ?? [];
+            const payloadActions = actions ?? [];
             const payloadSettings = Array.from(new Set(settings) ?? []);
             console.log("are these settings: " + payloadSettings);
-            console.log("are these plats: " + payloadPlatforms);
+            console.log("are these actions: " + payloadActions);
             //const payloadColumns = JSON.stringify([...(columns ?? [])]);
             if (Flow.SETTINGS_COPIER) {
                 setLoading(true);
                 try {
                     setUploadedId('');
                     const uploadResp = await Api.copy({
-                                  platforms: payloadPlatforms,
+                                  actions: payloadActions,
                                   settings: payloadSettings,
                                   sourceTenantName: tenantData.sourceTenantName,
                                   destinationTenantName: tenantData.destinationTenantName,
@@ -73,7 +73,7 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
                 setResult(false);
             }
         },
-        [platforms, settings, setLoading, tenantData, flow]
+        [actions, settings, setLoading, tenantData, flow]
     );
 
     /*const handleEmailChange = useCallback(
