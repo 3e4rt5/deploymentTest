@@ -15,15 +15,15 @@ import { useHistory } from 'react-router-dom';
 export const SettingsPage: React.FC = () => {
     return (
         <Stack direction="column" alignItems="center">
-            <Headline size="xlarge">Let's enrich some data!</Headline>
+            <Headline size="xlarge">What would you like to copy over?</Headline>
             <BodyText size="large">
                 Please select ad platform(s) and/or custom fields to include in your list.
             </BodyText>
             <MainContext.Consumer>
                 {props => (
                     <FieldsList
-                        setSelectedPlatforms={props!.setAdPlatforms}
-                        selectedPlatforms={props!.adPlatforms}
+                        setSelectedPlatforms={props!.setActions}
+                        selectedPlatforms={props!.actions}
                         selection={props!.settings}
                         setSelection={props!.setSettings}
                     />
@@ -45,7 +45,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
     selectedPlatforms,
     setSelectedPlatforms,
     setSelection,
-}) => {
+}) => { 
     const history = useHistory();
     const handleSwitchToggle = React.useCallback(
         (value, checked) => {
@@ -60,11 +60,11 @@ const FieldsList: React.FC<FieldsListProps> = ({
         [setSelection, selection]
     );
 
+
     const handleActionsChange = React.useCallback(
         (platforms: any) => {
-            const platformValues = platforms.map((platform: any) => platform.value);
+            const platformValues = platforms.value
             setSelectedPlatforms(platformValues);
-            console.log(platforms)
         },
         [setSelectedPlatforms]
     );
@@ -72,13 +72,11 @@ const FieldsList: React.FC<FieldsListProps> = ({
     const handleCreateClick = React.useCallback(() => {
         history.push('/export');
     }, [history]);
-
     return (
         <React.Fragment>
             <Card className="w-33 m-y-4">
-                <Headline className="m-y-2">Formatting Options</Headline>
+                <Headline className="m-y-2">Required Selection</Headline>
                 <AnvilSelect
-                    multiple
                     onChange={handleActionsChange}
                     options={fields.actions}
                     trigger={{ placeholder: 'Options' }}
@@ -87,7 +85,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
                 />
                 {selectedPlatforms.includes('custom') ? (
                     <React.Fragment>
-                        <Headline className="m-y-2">Company Attributes</Headline>
+                        <Headline className="m-y-2">Settings</Headline>
                         {fields.settingsList.sort().map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
@@ -104,10 +102,30 @@ const FieldsList: React.FC<FieldsListProps> = ({
                             </Card>
                         ))}
                     </React.Fragment>
-                ) : null}
+                ) : selectedPlatforms.includes('allSettings') ?
+                (
+                    <React.Fragment>
+                        <Headline className="m-y-2">Settings</Headline>
+                        {fields.settingsList.sort().map(fieldName => (
+                            <Card thin sharp className="m-b-2" key={fieldName}>
+                                <Stack alignItems="center">
+                                    <Stack.Item fill>
+                                        <BodyText size="small">{fieldName}</BodyText>
+                                    </Stack.Item>
+                                    <ToggleSwitch
+                                        checked
+                                        name={fieldName}
+                                        value={fieldName}
+                                    />
+                                </Stack>
+                            </Card>
+                        ))}
+                    </React.Fragment>
+                ) : null
+                }
             </Card>
             <Button
-                disabled={(selection.size === 0 || selectedPlatforms.length === 0) && selectedPlatforms.indexOf('allSettings') === -1}
+                disabled={selection.size === 0 && !selectedPlatforms.includes('allSettings')}
                 className="m-t-4"
                 primary
                 onClick={handleCreateClick}
