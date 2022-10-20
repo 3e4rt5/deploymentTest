@@ -7,7 +7,6 @@ export const fields = {
         'Alert',
     ],
     actions: [
-        { text: 'Deactivate Existing Chosen Settings', value: 'deactivate' },
         { text: 'All Settings', value: 'allSettings' },
         { text: 'Custom Settings', value: 'custom' },
     ],
@@ -20,5 +19,5 @@ export enum Flow {
 
 export const redirectTo = {
     helpAndTrainings:
-        'https://docs.google.com/document/d/14TGrqUpLD8W0MUPYsGXxATOqT4_v1saokG2w6gwEDHs/edit',
+        'https://servicetitan.atlassian.net/wiki/spaces/GE/pages/2433941857/Settings+Copy+Tool+User+Guide',
 };
