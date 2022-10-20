@@ -6,7 +6,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:5000/api';
 interface CopyPayload {
     sourceTenantName: string;
     destinationTenantName: string;
-    platforms: string[];
+    actions: string[];
     settings: string[];
 }
 
@@ -19,7 +19,7 @@ interface FeedbackPayload {
 class MainApi {
     copy(copyPayload: CopyPayload) {
         const jsonData = {
-            'platforms': copyPayload.platforms,
+            'actions': copyPayload.actions,
             'settings': copyPayload.settings,
             'sourceTenantName': copyPayload.sourceTenantName,
             'destinationTenantName': copyPayload.destinationTenantName
@@ -32,13 +32,14 @@ class MainApi {
     }
 
     feedback(feedbackPayload: FeedbackPayload) {
-        const formData = new FormData();
-        formData.append('feedbackType', feedbackPayload.feedbackType);
-        formData.append('feedbackResponse', feedbackPayload.feedbackResponse);
-        formData.append('feedbackEmail', feedbackPayload.feedbackEmail);
-        return axios.post(`/feedback`, formData, {
+        const jsonFeedbackData = {
+            'feedbackType': feedbackPayload.feedbackType,
+            'feedbackResponse': feedbackPayload.feedbackResponse,
+            'feedbackEmail': feedbackPayload.feedbackEmail
+        }
+        return axios.post(`/feedback`, jsonFeedbackData, {
             headers: {
-                'Content-Type': 'multipart/form-data',
+                'Content-Type': 'application/json',
             },
         });
     }
