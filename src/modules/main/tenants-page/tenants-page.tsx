@@ -70,39 +70,37 @@ export const TenantsPageConsumer: React.FC<{
 
     return (
         <div className="ta-center d-f flex-column align-items-center">
-            <Headline size="xlarge">Let's enrich some data!</Headline>
+            <Headline size="xlarge">Please enter your Source and Destination tenants below</Headline>
             <BodyText size="large">
-                Would you like to generate a new list or enrich an existing list?
+                <p>
+                    Please ensure that your destination tenant meets the following conditions:
+                    <br />Is not in a Live State
+                    <br />Has the SettingsMigrationTool Tag applied
+                </p>
             </BodyText>
             <FlowCard.Step
-                title="Please enter a name for this list"
-                className="m-t-4 w-50"
+                title="Please enter your Source Tenant name (This is where we will pull from)"
+                className="m-t-4 w-75"
                 content={
                     <React.Fragment>
-                        <BodyText className={`${Styles.requiredTitle} fs-italic`}>
-                            Required
-                        </BodyText>
                         <Input
                             value={sourceTenantName}
                             onChange={handleSourceNameChange}
-                            placeholder="Test-list-010221"
+                            placeholder="demotenant1"
                         />
                     </React.Fragment>
                 }
                 saved={sourceTenantName.length > 0}
             />
             <FlowCard.Step
-                title="Please enter a name for this list"
-                className="m-t-4 w-50"
+                title="Please enter your Destination Tenant name (This is where we will import to)"
+                className="m-t-4 w-75"
                 content={
                     <React.Fragment>
-                        <BodyText className={`${Styles.requiredTitle} fs-italic`}>
-                            Required
-                        </BodyText>
                         <Input
                             value={destinationTenantName}
                             onChange={handleDestinationNameChange}
-                            placeholder="Test-list-010221"
+                            placeholder="demotenant2"
                         />
                     </React.Fragment>
                 }
