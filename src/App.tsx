@@ -16,7 +16,7 @@ import { Feedback } from './modules/main/components/feedback/feedback';
 import { TenantsPage } from './modules/main/tenants-page/tenants-page';
 
 export const App: React.FC = () => {
-    const [adPlatforms, setAdPlatforms] = useState<string[]>([]);
+    const [actions, setActions] = useState<string[]>([]);
     const [settings, setSettings] = useState<Set<string>>(new Set());
     const [flow, setFlow] = useState(Flow.SETTINGS_COPIER);
     const [tenantData, setTenantData] = useState<TenantData>({
@@ -28,14 +28,14 @@ export const App: React.FC = () => {
             <BrowserRouter>
                 <MainContext.Provider
                     value={{
-                        adPlatforms,
+                        actions,
                         tenantData,
                         settings,
                         flow,
                         setFlow,
                         setTenantData,
                         setSettings,
-                        setAdPlatforms,
+                        setActions,
                     }}
                 >
                     <Frame header={<Header />}>
