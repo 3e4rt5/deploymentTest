@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
         >
             <Logo />
             <Link to="/">
-                <Headline>Sourcery Engine</Headline>
+                <Headline>Settings Copy Tool</Headline>
             </Link>
         </Stack>
     );
