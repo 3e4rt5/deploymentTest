@@ -12,12 +12,12 @@ export interface TenantData {
 
 interface MainContext {
     settings: Set<string>;
-    adPlatforms: string[];
+    actions: string[];
     tenantData: TenantData;
     flow: Flow;
     setFlow(flow: Flow): void;
     setSettings(settings: Set<string>): void;
-    setAdPlatforms(platforms: string[]): void;
+    setActions(actions: string[]): void;
     setTenantData(list: TenantData): void;
     toggleSelectField?(): void;
 }
