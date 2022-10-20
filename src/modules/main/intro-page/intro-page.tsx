@@ -7,20 +7,13 @@ import { Link as RouterLink } from 'react-router-dom';
 const StackContainer = (props: any) => {
   return (
     <div>
-        <Headline size="xlarge">Let's create a new list!</Headline>
-                <BodyText size="large">
-                    Please select filters for your new list
-                </BodyText>
+        <Headline size="xlarge">Welcome to the Settings Copy Tool</Headline>
                 <Card className="m-y-5">
                     <RouterLink to="/tenants">
                         <Button full primary>
-                            Create a new list
+                            Get Started
                         </Button>
                     </RouterLink>
-                    <BodyText className={classNames(Styles.divider, 'ta-center', 'm-y-4')} />
-                    <Button full primary>
-                            Tool 2
-                    </Button>
                 </Card>
     </div>
   );
