@@ -10,6 +10,9 @@ export const fields = {
         { text: 'All Settings', value: 'allSettings' },
         { text: 'Custom Settings', value: 'custom' },
     ],
+    deactivate: [
+        'Deactivate Existing Settings'
+    ]
 };
 
 export enum Flow {
@@ -19,5 +22,5 @@ export enum Flow {
 
 export const redirectTo = {
     helpAndTrainings:
-        'https://servicetitan.atlassian.net/wiki/spaces/GE/pages/2433941857/Settings+Copy+Tool+User+Guide',
+        'https://servicetitan.com',
 };
