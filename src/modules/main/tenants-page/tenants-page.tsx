@@ -18,6 +18,9 @@ export const TenantsPage: React.FC = () => {
                 <TenantsPageConsumer
                     setFlow={props!.setFlow}
                     setTenantData={props!.setTenantData}
+                    setSettings={props!.setSettings}
+                    setActions={props!.setActions}
+                    
                 />
             )}
         </MainContext.Consumer>
@@ -27,7 +30,9 @@ export const TenantsPage: React.FC = () => {
 export const TenantsPageConsumer: React.FC<{
     setFlow(flow: Flow): void;
     setTenantData(list: TenantData): void;
-}> = ({ setFlow, setTenantData }) => {
+    setSettings(settings: Set<string>): void;
+    setActions(actions: string[]): void;
+}> = ({ setFlow, setTenantData, setSettings, setActions }) => {
     const [sourceTenantName, setSourceName] = useState('');
     const [destinationTenantName, setDestinationName] = useState('');
     const [readyForSave, setReadyForSave] = useState(false);
@@ -49,6 +54,8 @@ export const TenantsPageConsumer: React.FC<{
     React.useEffect(() => {
         if (readyForSave) {
             handleSave();
+            setSettings(new Set());
+            setActions([]);
         }
     }, [readyForSave, handleSave]);
 
