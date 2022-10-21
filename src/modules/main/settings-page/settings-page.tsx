@@ -12,12 +12,16 @@ import { fields } from '../utils/constants';
 import { MainContext } from '../context/main.context';
 import { useHistory } from 'react-router-dom';
 
+const settingsText = "Please ensure only the settings pages you wish to copy over are toggled on (green)" + 
+". For the option 'Deactivate Existing Settings', if toggled on, please note any settings you choose to copy over" +
+", this will remove all existing records for this page prior to copying the data over."
+
 export const SettingsPage: React.FC = () => {
     return (
         <Stack direction="column" alignItems="center">
             <Headline size="xlarge">What would you like to copy over?</Headline>
             <BodyText size="large">
-                Please select ad platform(s) and/or custom fields to include in your list.
+                {settingsText}
             </BodyText>
             <MainContext.Consumer>
                 {props => (
@@ -85,7 +89,23 @@ const FieldsList: React.FC<FieldsListProps> = ({
                 />
                 {selectedPlatforms.includes('custom') ? (
                     <React.Fragment>
-                        <Headline className="m-y-2">Settings</Headline>
+                        <Headline className="m-y-2">Replace or Add To</Headline>
+                        {fields.deactivate.map(fieldName => (
+                            <Card thin sharp className="m-b-2" key={fieldName}>
+                                <Stack alignItems="center">
+                                    <Stack.Item fill>
+                                        <BodyText size="small">{fieldName}</BodyText>
+                                    </Stack.Item>
+                                    <ToggleSwitch
+                                        checked={selection.has(fieldName)}
+                                        name={fieldName}
+                                        value={fieldName}
+                                        onChange={handleSwitchToggle}
+                                    />
+                                </Stack>
+                            </Card>
+                        ))}
+                        <Headline className="m-y-2">Settings Options</Headline>
                         {fields.settingsList.sort().map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
@@ -105,7 +125,22 @@ const FieldsList: React.FC<FieldsListProps> = ({
                 ) : selectedPlatforms.includes('allSettings') ?
                 (
                     <React.Fragment>
-                        <Headline className="m-y-2">Settings</Headline>
+                        <Headline className="m-y-2">Replace or Add To</Headline>
+                        {fields.deactivate.map(fieldName => (
+                            <Card thin sharp className="m-b-2" key={fieldName}>
+                                <Stack alignItems="center">
+                                    <Stack.Item fill>
+                                        <BodyText size="small">{fieldName}</BodyText>
+                                    </Stack.Item>
+                                    <ToggleSwitch
+                                        checked
+                                        name={fieldName}
+                                        value={fieldName}
+                                    />
+                                </Stack>
+                            </Card>
+                        ))}
+                        <Headline className="m-y-2">Settings Options</Headline>
                         {fields.settingsList.sort().map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
