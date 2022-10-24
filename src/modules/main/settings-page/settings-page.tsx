@@ -89,7 +89,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
                 />
                 {selectedPlatforms.includes('custom') ? (
                     <React.Fragment>
-                        <Headline className="m-y-2">Replace or Add To</Headline>
+                        <Headline className="m-y-2">Deactivate Existing Selected Settings Below</Headline>
                         {fields.deactivate.map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
@@ -125,7 +125,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
                 ) : selectedPlatforms.includes('allSettings') ?
                 (
                     <React.Fragment>
-                        <Headline className="m-y-2">Replace or Add To</Headline>
+                        <Headline className="m-y-2">Deactivate Existing Selected Settings Below</Headline>
                         {fields.deactivate.map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
