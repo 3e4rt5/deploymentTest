@@ -45,7 +45,7 @@ export const fields = {
         { text: 'Custom Settings', value: 'custom' },
     ],
     deactivate: [
-        'Deactivate Existing Settings'
+        'Deactivate Existing Selected Settings Below'
     ]
 };
 
