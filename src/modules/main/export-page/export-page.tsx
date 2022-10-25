@@ -90,7 +90,7 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
 
     return (
         <Stack direction="column" alignItems="center">
-            <Headline size="xlarge">Let's get some data!</Headline>
+            <Headline size="xlarge">Let's copy some data!</Headline>
             {result ? (
                 <React.Fragment>
                     <BodyText size="large">
@@ -101,8 +101,9 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
             ) : (
                 <React.Fragment>
                     <BodyText size="large">
-                        This list will be sent to you via email once it's ready. Please enter your
-                        email address.
+                        This request will be submitted to the tool, you should receive an email from <b>Settings Copier Engine </b> 
+                        notifying you of the results in 5 to 10 minutes. If you have any issues please use the <b>?</b> at the bottom right
+                        hand corner of the page to submit feedback.
                     </BodyText>
                         {result === false ? (
                             <Banner
