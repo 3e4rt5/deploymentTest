@@ -90,7 +90,7 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
 
     return (
         <Stack direction="column" alignItems="center">
-            <Headline size="xlarge">Let's copy some data!</Headline>
+            <Headline size="xlarge">Let's copy some settings!</Headline>
             {result ? (
                 <React.Fragment>
                     <BodyText size="large">
@@ -100,17 +100,16 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <BodyText size="large">
-                        This request will be submitted to the tool, you should receive an email from <b>Settings Copier Engine </b> 
-                        notifying you of the results in 5 to 10 minutes. If you have any issues please use the <b>?</b> at the bottom right
-                        hand corner of the page to submit feedback.
+                    <BodyText size="large" className='ta-center'>
+                        Once your settings copy request is submitted, you should receive an email with results within 5-10 minutes. 
+                        If you have any issues, please use the support button at the bottom right hand corner of the page to submit feedback.
                     </BodyText>
                         {result === false ? (
                             <Banner
                                 className="w-20 m-y-2 ta-center"
                                 status="critical"
                                 icon
-                                title="Something's gone rong! please contact ssridhar@servicetitan.com! Do not click submit again"
+                                title="Something went wrong! Please do not attempt to run the tool again. Instead, please contact ssridhar@servicetitan.com"
                             />
                         ) : null}
                         <Button
