@@ -6,9 +6,12 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const StackContainer = (props: any) => {
   return (
-    <div>
+    <div className='ta-center'>
         <Headline size="xlarge">Welcome to the Settings Copy Tool</Headline>
-                <Card className="m-y-5">
+        <BodyText className='ta-center m-y-2' size="large">
+            The Settings Copy Tool allows you to easily copy over settings from one tenant to another.
+        </BodyText>
+                <Card className="m-y-3">
                     <RouterLink to="/tenants">
                         <Button full primary>
                             Get Started
