@@ -12,15 +12,15 @@ import { fields } from '../utils/constants';
 import { MainContext } from '../context/main.context';
 import { useHistory } from 'react-router-dom';
 
-const settingsText = "Please ensure only the settings pages you wish to copy over are toggled on (green)" + 
-". For the option 'Deactivate Existing Settings', if toggled on, please note any settings you choose to copy over" +
-", this will remove all existing records for this page prior to copying the data over."
+const settingsText = "Please ensure that only the settings pages you wish to copy over are toggled on (green). "
++ "If the option 'Deactivate Existing Settings' is toggled on, the tool will remove all existing records for the "
++ "selected settings pages prior to copying over the new settings."
 
 export const SettingsPage: React.FC = () => {
     return (
         <Stack direction="column" alignItems="center">
-            <Headline size="xlarge">What would you like to copy over?</Headline>
-            <BodyText size="large">
+            <Headline size="xlarge">Select Settings to Copy</Headline>
+            <BodyText size="large" className='ta-center'>
                 {settingsText}
             </BodyText>
             <MainContext.Consumer>
@@ -79,7 +79,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
     return (
         <React.Fragment>
             <Card className="w-33 m-y-4">
-                <Headline className="m-y-2">Required Selection</Headline>
+                <Headline className="m-y-2">Select Settings (Required)</Headline>
                 <AnvilSelect
                     onChange={handleActionsChange}
                     options={fields.actions}
@@ -105,7 +105,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
                                 </Stack>
                             </Card>
                         ))}
-                        <Headline className="m-y-2">Settings Options</Headline>
+                        <Headline className="m-y-2">Settings Pages</Headline>
                         {fields.settingsList.sort().map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
@@ -140,7 +140,7 @@ const FieldsList: React.FC<FieldsListProps> = ({
                                 </Stack>
                             </Card>
                         ))}
-                        <Headline className="m-y-2">Settings Options</Headline>
+                        <Headline className="m-y-2">Settings Pages</Headline>
                         {fields.settingsList.sort().map(fieldName => (
                             <Card thin sharp className="m-b-2" key={fieldName}>
                                 <Stack alignItems="center">
