@@ -77,37 +77,40 @@ export const TenantsPageConsumer: React.FC<{
 
     return (
         <div className="ta-center d-f flex-column align-items-center">
-            <Headline size="xlarge">Please enter your Source and Destination tenants below</Headline>
+            <Headline size="xlarge">Enter Source & Destination Tenants</Headline>
             <BodyText size="large">
                 <p>
-                    Please ensure that your destination tenant meets the following conditions:
-                    <br />Is not in a Live State
-                    <br />Has the SettingsMigrationTool Tag applied
+                    Please enter the source and destination tenants below. The tool will copy the settings from the source tenant and 
+                    import them to the destination tenant.
+
+                    <br /> <br />Please make sure that the destination tenant meets the following conditions:
+                    <br />- Is not in a live state
+                    <br />- Has the SettingsMigrationTool tag applied
                 </p>
             </BodyText>
             <FlowCard.Step
-                title="Please enter your Source Tenant name (This is where we will pull from)"
-                className="m-t-4 w-75"
+                title="Please enter the source tenant name (where to pull from)"
+                className="m-t-2 w-66"
                 content={
                     <React.Fragment>
                         <Input
                             value={sourceTenantName}
                             onChange={handleSourceNameChange}
-                            placeholder="demotenant1"
+                            placeholder="tenant1"
                         />
                     </React.Fragment>
                 }
                 saved={sourceTenantName.length > 0}
             />
             <FlowCard.Step
-                title="Please enter your Destination Tenant name (This is where we will import to)"
-                className="m-t-4 w-75"
+                title="Please enter the destination tenant name (where to import the new settings)"
+                className="m-t-4 w-66"
                 content={
                     <React.Fragment>
                         <Input
                             value={destinationTenantName}
                             onChange={handleDestinationNameChange}
-                            placeholder="demotenant2"
+                            placeholder="tenant2"
                         />
                     </React.Fragment>
                 }
