@@ -93,10 +93,10 @@ export const WrappedExportPage: React.FC<WrappedExportPageProps> = ({
             <Headline size="xlarge">Let's copy some settings!</Headline>
             {result ? (
                 <React.Fragment>
-                    <BodyText size="large">
-                        Thank you! You will receive the list in your email when it's ready.
+                    <BodyText size="large" className="ta-center">
+                        {`You're all set! If you encounter any issues with the data import
+                        , please do not attempt to run the tool again. Instead, please contact ssridhar@servicetitan.com regarding request id: ${uploadedId}`}
                     </BodyText>
-                    <BodyText>{`Your request ID is: ${uploadedId}. In case of problems, please contact ssridhar@servicetitan.com with this Id.`}</BodyText>
                 </React.Fragment>
             ) : (
                 <React.Fragment>
